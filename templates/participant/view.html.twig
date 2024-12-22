@@ -1,0 +1,19 @@
+{% extends 'viewBase.html.twig' %}
+
+{% block title %}Participant
+{% endblock %}
+
+{% block pageTitle %}Participant
+{% endblock %}
+{% block buttons %}
+	<div class="button_wrapper">
+			<a class="a--button" href="/participants/{{ participant.id }}/edit/">Éditer le participant</a>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<ul class="list">
+		<li><span class="list_label">Nom:</span> {{ participant.name }}</li>
+		<li><span class="list_label">Adresse e-mail:</span> {{ participant.email }}</li>
+	</ul>
+{% endblock %}

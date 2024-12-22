@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<style>
+		.wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+
+        .title_wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+	</style>
+
+	<div class="wrapper">
+		<div class="title_wrapper">
+			<h1>
+				{% block pageTitle %}Title
+				{% endblock %}
+			</h1>
+
+			{% block button %}
+				<a href="/item/new">Nouveau</a>
+			{% endblock %}
+
+		</div>
+
+		{% block content %}{% endblock %}
+	</div>
+{% endblock %}
+

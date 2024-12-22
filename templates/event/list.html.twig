@@ -1,0 +1,45 @@
+{% extends 'indexBase.html.twig' %}
+
+{% block title %}
+	Événements
+{% endblock %}
+
+{% block pageTitle %}
+	Événements
+{% endblock %}
+
+{% block button %}
+	<a class="a--button" href="/events/new">Nouvel événement</a>
+
+{% endblock %}
+
+{% block content %}
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Date</th>
+					<th>Location</th>
+					<th>Informations</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for event in events %}
+					<tr>
+						<td>{{ event.id }}</td>
+						<td>{{ event.name }}</td>
+						<td>{{ event.date|date('Y-m-d') }}</td>
+						<td>{{ event.latitude }}, {{ event.longitude }}</td>
+						<td><a href="/events/{{ event.id }}" class="a--button">Voir l'événement</a></td>
+					</tr>
+				{% endfor %}
+				{% if events|length == 0 %}
+					<tr>
+						<td colspan="4" style="text-align:center;">Aucun événement trouvé</td>
+					</tr>
+				{% endif %}
+			</tbody>
+		</table>
+{% endblock %}
+

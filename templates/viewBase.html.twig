@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<style>
+		.wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 100%;
+			font: 18px / 1.5 sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.title_wrapper {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.content_wrapper {
+			margin-top: 1em;
+			width: 90%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: start;
+			gap: 1rem;
+		}
+	</style>
+
+	<div class="wrapper">
+		<div class="title_wrapper">
+			<h1>
+				{% block pageTitle %}Title
+				{% endblock %}
+			</h1>
+			{% block buttons %}{% endblock %}
+		</div>
+
+		<div class="content_wrapper">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+{% endblock %}
+

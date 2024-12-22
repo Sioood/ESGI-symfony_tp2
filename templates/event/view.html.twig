@@ -1,0 +1,59 @@
+{% extends 'viewBase.html.twig' %}
+
+{% block title %}Événement
+{% endblock %}
+
+{% block pageTitle %}Événement
+{% endblock %}
+
+{% block content %}
+	<ul class="list">
+		<li>
+			<span class="list_label">ID:</span>
+			{{ event.id }}
+		</li>
+		<li>
+			<span class="list_label">Nom:</span>
+			{{ event.name }}
+		</li>
+		<li>
+			<span class="list_label">Location:</span>
+			{{ event.latitude }}, {{ event.longitude }}
+		</li>
+	</ul>
+
+	<div class="distance_wrapper">
+		<h2>Calculer la distance jusqu'à l'événement</h2>
+		<form action="{{ path('calculate_distance_to_event', {'id': event.id}) }}" method="get" class="form_distance">
+			<div>
+					<label for="lat">Latitude:</label>
+					<input type="text" id="lat" name="lat" required>
+			</div>
+			<div>
+					<label for="lon">Longitude:</label>
+					<input type="text" id="lon" name="lon" required>
+			</div>
+			<button type="submit" class="a--button">Calculer la distance</button>
+		</form>
+	</div>
+
+	<div class="participants_wrapper">
+		<div>
+			<h2>Participants</h2>
+			<a href="/events/{{ event.id }}/participants/new" class="a--button">Ajouter un participant</a>
+		</div>
+		<ul>
+			{% if event.participants is not empty %}
+				{% for participant in event.participants %}
+					<li class="event_participant">
+						<a href="/participants/{{ participant.id }}"><span>{{ participant.name }} - {{ participant.email }}</span></a>
+						{# <a href="/events/{{ event.id }}/distance?lat=10&lon=10" class="a--button"><span>Calculer la distance</span></a> #}
+					</li>
+				{% endfor %}
+			{% else %}
+				<span>Aucun participant</span>
+			{% endif %}
+		</ul>
+	</div>
+{% endblock %}
+
